@@ -1,5 +1,3 @@
-// ❗ Use console.log() To Check Answers
-
 // ✅ Using console.log()
 
     // console.log("Hey there!");
@@ -14,11 +12,15 @@
 
     // String
 
+        // let name = "Louis";
+
         // console.log(typeof "here");
+
+        // console.log(typeof `My name is ${name}`);
 
     // Number
 
-        // console.log(typeof 5);
+        // console.log(typeof 5.5);
 
     // Boolean
 
@@ -28,15 +30,27 @@
 
         // console.log(typeof undefined);
 
+        // let x;
+
+        // x = 5;
+
+        // console.log(x);
+
     // Null => absence of value
 
         // console.log(typeof null);
+
+        // console.log(undefined === null);
+
+        // let x = [];
+
+        // console.log(x);
 
     // Symbol => unique identifier
 
         // let id = Symbol("test");
 
-        // console.log(typeof id);
+        // console.log(id);
     
     // BigInt => numbers larger than those JS can represent with a Number
 
@@ -48,13 +62,25 @@
 
     // 💡 what are main differences / use cases?
 
-    // let
+        // var someValue = "Louis";
+
+        // var someValue;
+
+    // let => expecting values to change
 
         // let x = 10;
 
-        // let x = 5;
+        // let y = 5;
 
-    // const
+        // let z = x + y;
+
+        // // ...
+
+        // x = 15;
+
+        // console.log(z);
+
+    // const => expecting values to remain the same
 
         // const x = 10;
 
@@ -62,12 +88,37 @@
         
         // x = 5;
 
+        // function someFunction() {
+        //     return "Hello world!";
+        // } 
+
+        // const someFunction = () => {
+        //     return "Hello world!";
+        // }
+
+        // someFunction(someValue);
+
 // ✅ Conditional Statements
+
+    // truthy / falsey values
+
+    //     true
+
+    //          5
+
+    //         "hello"
+
+    //     false
+
+    //         null
+
+    //         undefined
 
     // if...else
 
-        // let x = 5;
+        // let x = "5";
 
+        // // === also checks for data type
         // if (x === 5) {
         //     console.log("Equal to 5!");
         // } else {
@@ -80,6 +131,8 @@
 
         // if (x > 5) {
         //     console.log("Greater than five!");
+        //     // some
+        //     // behaviors
         // } else if (x === 5) {
         //     console.log("Equal to five!");
         // } else {
@@ -89,6 +142,8 @@
     // ternary operator
 
         // let x = 5;
+
+        // { CONDITION ? IF TRUE : IF FALSE }
 
         // { x === 5 ? console.log("Equal to five!") : console.log("Not equal to five!") }
 
@@ -104,11 +159,11 @@ console.log("------------------------");
 
     // const x;
 
-    // const x = 5;
+    const x = 5;
 
     // const x;
 
-    // console.log(`Success! x = ${x}`);
+    console.log(`Success! x = ${x}`);
     
     // 🚨 Be sure to comment out any code above before proceeding to the next activity.
 
@@ -116,46 +171,48 @@ console.log("------------------------");
 
     // let y;
 
-    // let y = 5; 
+    let y = 5; 
 
     // let y;
 
-    // console.log(`Success! y = ${y}`);
+    console.log(`Success! y = ${y}`);
 
     // 🚨 Be sure to comment out any code above before proceeding to the next activity.
 
 // Uncomment the code below to get a successful response in console
 
-    // const a = 2;
+    const a = 2;
     
     // a = 2;
     
     // let b;
     
-    // let b = 4
+    let b = 4;
     
-    // console.log(`Success! ${a} + ${a} = ${b}`);
+    console.log(`Success! ${a} + ${a} = ${b}`);
 
     // 🚨 Be sure to comment out any code above before proceeding to the next activity.
 
 // 🚧 Break Out Activity 2: Using if...else
 
     // 🚧 Set a value for "time" between 0 and 24
-    // let time;
+    let time = 12
 
-    // If "time" is less than or equal to 12...
-    // if (❓) {
-
-        // console.log(`${time} is in the AM.`)
-
-    // In all other cases...
-    // } else {
-
-        // console.log(`${time} is in the PM.`)
-
-    // }
+    // 💡 If "time" is less than 12...
+    if (time < 12) {
+        console.log(`${time} is in the AM.`)
+    
+    // 💡 In all other cases...
+    } else {
+        console.log(`${time} is in the PM.`)
+    }
 
     // ✨ BONUS: Try refactoring the above expression using a ternary operator.
+
+    { time < 12 ? console.log(`${time} is in the AM.`) : console.log(`${time} is in the PM.`) }
+
+    // DRY => Reduce redundancy of console.log
+    // console.log(time < 12 ? `${time} is in the AM.` : `${time} is in the PM.`);
 
     // 🚨 Be sure to comment out any code above before proceeding to the next activity.
 
@@ -174,15 +231,54 @@ console.log("------------------------");
 
     // 🚨 Assign a value to "marks" between 0 and 100
     
-        // let marks;
+    let marks = 100;
 
     // 🚨 Format your if...else if...else conditional below
-    
-        // if (❓) {
-        // ... 
-        // } else if (❓) {
-        // ...
-        // ...
-        // } else {
-        // ...
-        // }
+
+    // if (marks > 90) {
+    //     console.log("AA");
+    // } else if (marks > 80) {
+    //     console.log("AB");
+    // } else if (marks > 70) {
+    //     console.log("BB");
+    // } else if (marks > 60) {
+    //     console.log("BC");
+    // } else if (marks > 50) {
+    //     console.log("CC");
+    // } else if (marks > 40) {
+    //     console.log("CD");
+    // } else if (marks > 30) {
+    //     console.log("DD");
+    // } else {
+    //     console.log("FF");
+    // }
+
+    // ❗Try refactoring the below solution into a switch statement.
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
+
+    switch (true) {
+        case marks > 90:
+            console.log("AA");
+            break;
+        case marks > 80:
+            console.log("AB");
+            break;
+        case marks > 70:
+            console.log("BB");
+            break;
+        case marks > 60:
+            console.log("BC");
+            break;
+        case marks > 50:
+            console.log("CC");
+            break;
+        case marks > 40:
+            console.log("CD");
+            break;
+        case marks > 30:
+            console.log("DD");
+            break;
+        default:
+            console.log("FF");
+            break;
+    }
