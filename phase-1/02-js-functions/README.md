@@ -1,7 +1,5 @@
 # JavaScript Functions
 
-# JavaScript Functions
-
 ### Learning Goals
 
 &emsp; ✅ Explore why functions are important in JS
