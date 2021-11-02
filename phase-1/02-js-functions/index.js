@@ -207,11 +207,11 @@ console.log("------------------------");
         const secondReturn = secondFunction();
 
         if (firstReturn > secondReturn) {
-            return "First Function Return is Higher!"
+            return "First Function Return is Higher!";
         } else if (secondReturn > firstReturn) {
-            return "Second Function Return is Higher!"
+            return "Second Function Return is Higher!";
         } else {
-            return "Draw!"
+            return "Draw!";
         }
     }
 
