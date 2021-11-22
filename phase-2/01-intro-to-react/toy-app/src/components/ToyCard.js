@@ -6,11 +6,12 @@ function ToyCard(props) {
             the "toy" Object passed as a prop
             from "App.js" */}
             
-            <h1>Toy Name: {"your code here"}</h1>
-            <img src={"your code here"}/>
-            <p>Likes: {"your code here"}</p>
+            <h1>Toy Name: {props.toy.name}</h1>
+            <img src={props.toy.image}/>
+            <p>Likes: {props.toy.likes}</p>
         </div>
     );
 }
 
 // Export ToyCard Component function to make usable elsewhere in our React app
+export default ToyCard;
