@@ -1,3 +1,15 @@
+// props object
+// { 
+//     key: 1,  
+//     toy: {
+//         id: 1,
+//         name: "Woody",
+//         image:
+//             "https://cdn-ssl.s7.disneystore.com/is/image/DisneyShopping/6101036512835",
+//         likes: 33
+//     }
+// }
+
 function ToyCard(props) {
     return (
         // Must return JSX as one Parent Level Element
