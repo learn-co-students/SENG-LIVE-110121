@@ -1,3 +1,5 @@
+// Presentational Component
+
 function NavBar() {
     return (
         <nav className="nav">
