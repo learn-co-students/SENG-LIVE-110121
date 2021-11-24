@@ -1,5 +1,8 @@
 import './App.css';
 
+// Hook Imports
+import { useState } from 'react';
+
 // Component Imports
 import Header from './components/Header';
 import NavBar from './components/NavBar';
@@ -9,6 +12,10 @@ import CardList from './components/CardList';
 import cardData from './cards';
 
 function App() {
+  // Vanilla JavaScript, Set Up New State for cardData
+  // const [ STATE NAME, SETTER FUNCTION ] = useState(INITIAL VALUE);
+  const [cards, setCards] = useState(cardData);
+  
   return (
     <div className="App">
       {/* NavBar Component */}
@@ -22,7 +29,7 @@ function App() {
 
       {/* CardList Component */}
       <CardList 
-        cards={cardData} 
+        cards={cards} 
       />
     </div>
   );
