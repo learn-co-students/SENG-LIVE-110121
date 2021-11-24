@@ -9,9 +9,10 @@ function Card({ title, content="Add Some Content Here"}) {
     // State to Manage Whether Card Has Been Added to Cart (Or Not) => isAdded
     // Initial Value => false
 
+    const [ isAdded, setAdded ] = useState(false);
+
     // State to Manage Whether Card Has Been Liked (Or Not) => isLiked
     // Initial Value => false
-
 
     const ColoredLine = ({ color }) => (
         <hr
@@ -24,12 +25,18 @@ function Card({ title, content="Add Some Content Here"}) {
         />
     );
 
-    return (
-        <div className="card">
+    const CardContent = () => (
+        <>
             <h2 className="component-name">Card Component</h2>
             <h1>{title}</h1>
             <ColoredLine color="black" />
             <p>{content}</p>
+        </>
+    );
+
+    return (
+        <div className="card">
+            { isAdded ? <h2>Added to Cart!</h2> : <CardContent /> }
 
             {/* Break Out Activity #1: Modify the onClick behavior of our Add to Cart <button> 
             to render only an H2 element saying “Added to Cart” in place of Card details. */}
@@ -38,9 +45,13 @@ function Card({ title, content="Add Some Content Here"}) {
             manage its own isToggled state. 💡 To configure each <Button />, try passing a “name” 
             prop from Card.js */}
 
-            <button className="button">Add To Cart | Remove From Cart</button>
+            <button className="button" onClick={() => setAdded(!isAdded)}>
+                {isAdded ? "Remove From Cart" : "Add to Cart" }
+            </button>
             <br />
-            <button className="button">♡ | ❤️</button>
+            <button className="button">
+                ♡ | ❤️
+            </button>
         </div>
     );
 }
