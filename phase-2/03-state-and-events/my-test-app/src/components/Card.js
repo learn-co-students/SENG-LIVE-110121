@@ -1,9 +1,18 @@
 // Accepts a Card object as a prop
 
+import { useState } from 'react';
+
 function Card({ title, content="Add Some Content Here"}) {
     // props = { title: "My Title" }
     // props.title => "My Title"
     
+    // State to Manage Whether Card Has Been Added to Cart (Or Not) => isAdded
+    // Initial Value => false
+
+    // State to Manage Whether Card Has Been Liked (Or Not) => isLiked
+    // Initial Value => false
+
+
     const ColoredLine = ({ color }) => (
         <hr
             style={{
