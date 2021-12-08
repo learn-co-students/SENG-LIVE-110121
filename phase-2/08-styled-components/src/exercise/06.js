@@ -8,26 +8,11 @@ const lightTheme = {
 };
 
 // ✅ uncomment the darkTheme ⬇️
-// const darkTheme = {
-//   primary: "rebeccapurple",
-//   color: "white",
-//   background: "black",
-// };
-
-export default function App() {
-  // ✅ use the useState hook to make a state variable for theme
-  const [theme, setTheme] = useState(lightTheme);
-
-  // ✅ add click handlers to each button, and set state to change the theme
-  return (
-    <ThemeProvider theme={theme}>
-      <Wrapper>
-        <Button>Use Light Theme</Button>
-        <Button>Use Dark Theme</Button>
-      </Wrapper>
-    </ThemeProvider>
-  );
-}
+const darkTheme = {
+  primary: "rebeccapurple",
+  color: "white",
+  background: "black",
+};
 
 const Button = styled.button`
   background: ${props => props.theme.primary};
@@ -47,3 +32,18 @@ const Wrapper = styled.div`
   display: grid;
   place-items: center;
 `;
+
+export default function App() {
+  // ✅ use the useState hook to make a state variable for theme
+  const [theme, setTheme] = useState(lightTheme);
+
+  // ✅ add click handlers to each button, and set state to change the theme
+  return (
+    <ThemeProvider theme={theme}>
+      <Wrapper>
+        <Button onClick={() => setTheme(lightTheme)}>Use Light Theme</Button>
+        <Button onClick={() => setTheme(darkTheme)}>Use Dark Theme</Button>
+      </Wrapper>
+    </ThemeProvider>
+  );
+}
