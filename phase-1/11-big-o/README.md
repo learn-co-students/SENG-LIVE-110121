@@ -7,7 +7,3 @@
 - Big-Θ (Theta) Notation
 - Big Ω (Omega) Notation
 - Big-O Notation
-
-### Resources
-
-&emsp; [Understanding ECMAScript 6](https://leanpub.com/understandinges6/read/)
