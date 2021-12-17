@@ -8,4 +8,5 @@ Patient.create({species:'cat', name:'bob', age:9, owner:'tom', phone:'999999999'
 Patient.create({species:'dog', name:'dan', age:2, owner:'max', phone:'999999999', active:true, clinic_id:c1.id})
 Patient.create({species:'bird', name:'picard', age:2, owner:'oz', phone:'999999999', active:true, clinic_id:c2.id})
 Patient.create({species:'rabit', name:'ted', age:1, owner:'zac', phone:'999999999', active:true, clinic_id:c2.id})
+
 puts 'done seeding'
