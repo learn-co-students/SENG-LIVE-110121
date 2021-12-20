@@ -1,3 +1,3 @@
-class Vet < ActiveRecord::Base
+# class Vet < ActiveRecord::Base
 
-end 
+# end 
