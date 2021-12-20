@@ -32,3 +32,5 @@ In a one to many a foreign key is stored on many models to reference one.
 
 In a many to many we store the foreign keys on a join model. 
 Each of the models have many join models giving it a many to many relationship through the join. 
+
+![one-to-many](./assets/many-to-many.png)
