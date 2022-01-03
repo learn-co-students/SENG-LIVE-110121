@@ -35,6 +35,7 @@
 
 # Sinatra
 - Domain specific language for creating web apps
+- Framework in ruby
 - Uses Rack middleware for server communication 
 - Manages DB with sqlite
 - Introduction for Ruby on Rails
