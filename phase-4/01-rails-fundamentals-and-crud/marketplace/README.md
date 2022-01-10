@@ -160,7 +160,7 @@ end
         <li> Creates a migration file in db/migrate</li>
         <li> Creates a model file in app/models</li>
         <li> Creates controller in app/controllers</li>
-        <li> Creates a route in config/routes if actions are provided as arguments <strong>NOTE:</strong> these routes are not useful, will not follow REST convention</li>
+        <li> Uses the resource method for defining routes in config/routes.rb</li>
     </ul>
 </details>
     
