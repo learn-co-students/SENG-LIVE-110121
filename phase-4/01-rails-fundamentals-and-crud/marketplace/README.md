@@ -160,7 +160,7 @@ end
         <li> Creates a migration file in db/migrate</li>
         <li> Creates a model file in app/models</li>
         <li> Creates controller in app/controllers</li>
-        <li> Creates a route in config/routes if actions are provided as arguments <strong>NOTE:</strong> these routes are not useful, will not follow REST convention</li>
+        <li> Uses the resource method for defining routes in config/routes.rb</li>
     </ul>
 </details>
     
@@ -369,11 +369,11 @@ class ItemsController < ApplicationController
 
     def show
         item = Item.find_by_id(params[:id])
-        if item 
+        if item
           render json: item
-        else 
+        else
           render json: { error: "Item not found" }, status: :not_found
-        end 
+        end
     end
 end
 ```
