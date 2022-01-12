@@ -112,9 +112,12 @@ When a user that is a seller is deleted, we want to retain the items they sold t
 In this case, we can nullify our sellers dependents, while destroying a buyers dependents.
 
 ```rb
-    has_many :purchased_items, class_name: "Item", foreign_key: 'buyer_id', dependent: :destroy
+    has_many :purchased_items, class_name: "Item", foreign_key: 'buyer_id', dependent: :nullify
     has_many :sold_items, class_name: "Item", foreign_key: 'seller_id', dependent: :nullify
 ```
+
+- There are options to use for dependents: `destroy`, `destroy_all`, and `nullify`. `destroy` and `destroy_all`
+will also delete the associated objects records, nullify will only set the . 
 
 ### Complete the Item api
 
