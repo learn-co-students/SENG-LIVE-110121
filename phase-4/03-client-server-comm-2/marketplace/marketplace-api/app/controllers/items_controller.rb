@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
-    def index 
-        render json: Item.all
+    def index # return all items regardless of sold status 
+        render json: Item.all.where(sold: false)
     end
 
     def show 
@@ -27,7 +27,6 @@ class ItemsController < ApplicationController
         render json: item, status: :created 
 
     rescue ActiveRecord::RecordInvalid => invalid 
-        byebug
         render json: {error: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
     
@@ -41,7 +40,19 @@ class ItemsController < ApplicationController
     #     end
     # end
 
+    def update 
+        item = Item.find_by_id(params[:id])
 
+        if item
+            if item.update(item_params)
+            render json: item, status: :ok
+            else 
+                render json: {error: item.errors.full_messages}
+            end 
+        else  
+            render json: {error: "This item does not exist"}, status: :not_found
+        end
+    end
 
 
 

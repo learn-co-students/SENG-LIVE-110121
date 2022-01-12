@@ -11,4 +11,20 @@ class BusinessesController < ApplicationController
     rescue ActiveRecord:RecordNotFound => error 
         render json: {error: error.message}
     end
+
+    def create 
+        business = Business.create(business_params)
+
+        if business.valid? 
+            render json: business 
+        else 
+            render json: {error: business.errors.full_messages}
+        end
+    end
+
+    private 
+
+    def business_params
+        params.permit(:name, :zip_code, :city, :state, :category)
+    end
 end
