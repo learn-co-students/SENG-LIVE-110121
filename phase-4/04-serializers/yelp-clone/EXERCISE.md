@@ -2,13 +2,13 @@
 
 Refer to this doc for validations: [Active Record Validations](https://guides.rubyonrails.org/active_record_validations.html)
 
-1. [ ] Add the following validations to the models:
+1. [x] Add the following validations to the models:
 
 - Upon creation of a business object, a name and address must be present
 - A new user should be created with a username and email present, both must be unique.
 - A review must be created with content.
 
-2. [ ] Create a current user method to associate objects created with a 'logged in' user:
+2. [x] Create a current user method to associate objects created with a 'logged in' user:
 
 ```rb
 inside ApplicationController
@@ -20,7 +20,7 @@ def current_user
 end
 ```
 
-3. [ ] Define a route and controller method responsible for creating a new business. Reminder: Handle valid or invalid data in the controller method.
+3. [x] Define a route and controller method responsible for creating a new business. Reminder: Handle valid or invalid data in the controller method.
 
 example on how to handle valid or invalid data:
 
