@@ -3,30 +3,44 @@ import { BrowserRouter as Router } from "react-router-dom";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 
-const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+function App() {
   const [currentUser, setCurrentUser] = useState(null);
-
+  const [authenticated, setAuthenticated] = useState(false);
+  console.log(currentUser);
   useEffect(() => {
-    fetch("/me").then((res) => {
+    fetch("/me", {
+      credentials: "include",
+    }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
           setCurrentUser(user);
-          setIsAuthenticated(true);
+          setAuthenticated(true);
         });
+      } else {
+        setAuthenticated(true);
       }
     });
   }, []);
 
-  if (isAuthenticated) {
+  if (!authenticated) {
     return <div></div>;
   }
   return (
-    <div className="app">
-    <h1>Welcome to Marketplace!</h1>
-      <Router>{currentUser ? <LoggedIn setCurrentUser={setCurrentUser} /> : <LoggedOut />}</Router>
+    <div>
+      <h1>Marketplace App</h1>
+
+      <Router>
+        {currentUser ? (
+          <LoggedIn
+            setCurrentUser={setCurrentUser}
+            currentUser={currentUser}
+          />
+        ) : (
+          <LoggedOut setCurrentUser={setCurrentUser} />
+        )}
+      </Router>
     </div>
   );
-};
+}
 
 export default App;

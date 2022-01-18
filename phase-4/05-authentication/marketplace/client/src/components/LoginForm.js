@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const LoginForm = () => {
+const LoginForm = ({setCurrentUser}) => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -29,6 +29,7 @@ const LoginForm = () => {
       .then((r) => r.json())
       .then((user) => {
         console.log(user);
+        setCurrentUser(user)
         setFormData({
           username: "",
           password: "",
