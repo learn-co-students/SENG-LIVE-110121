@@ -1,48 +1,3 @@
-# Lecture 2 exercise
-
-Refer to this doc for validations: [Active Record Validations](https://guides.rubyonrails.org/active_record_validations.html)
-
-1. [x] Add the following validations to the models:
-
-- Upon creation of a business object, a name and address must be present
-- A new user should be created with a username and email present, both must be unique.
-- A review must be created with content.
-
-2. [x] Create a current user method to associate objects created with a 'logged in' user:
-
-```rb
-inside ApplicationController
-
-private
-
-def current_user
-  User.last
-end
-```
-
-3. [x] Define a route and controller method responsible for creating a new business. Reminder: Handle valid or invalid data in the controller method.
-
-example on how to handle valid or invalid data:
-
-```rb
-  if obj.save
-    render json: obj, status: :created
-  else
-    render json: { error: obj.errors.full_messages }, status: :unprocessable_entity
-  end
-```
-
-4. [ ] Define a route and controller method to create a new review.
-
-   - When a new review is created, the foreign key for a user and business must be present due to the requirements enforced by a `belongs_to` association.
-   - For this we can use the currently logged in user by invoking on the `current_user` hint: `current_user.reviews.create(...)` An associated `business_id` could be provided in a few different ways. Get creative and consider how this would be handled. Typically, a nested route would be set up to include the `business_id` for which the review is being submitted for, but we will not be handling it this way today.
-   - Reminder to handle valid or invalid data.
-
-5. [ ] Run `rails s` and test the methods defined in the API such as:
-
-- Create a new business succesfully. What is the response?
-- Create a failed new business. How can the unsuccessful attempt be further investigated? What steps can be taken?
-
 # Lecture 3 Exercise
 
 Together as a group, implement the following features into the API, carefully thinking through each of the questions necessary to build out an update and delete feature for the Review model.
@@ -152,3 +107,84 @@ Navigate to `http://localhost:3000/businesses` in the browser. What is the respo
 Refresh the page to confirm that data serialization is correct.
 
 BONUS: Think about how to also serialize and return author's `username` of each review.
+
+# Lecture 5 Exercise
+
+For this exercise, add the following features to the Yelp clone:
+
+[ ] Signup
+[ ] Login
+[ ] Authentication
+[ ] Logout
+
+### What dependencies do we need to add to support authentication? HINT: What Ruby gem will allow us to salt and store safe passwords?
+
+### Configurations that are necessary to gain access to sessions and cookies:
+
+Inside `config/application.rb`
+
+```rb
+config.middleware.use ActionDispatch::Cookies
+config.middleware.use ActionDispatch::Session::CookieStore
+
+# Use SameSite=Strict for all cookies to help protect against CSRF
+config.action_dispatch.cookies_same_site_protection = :strict
+```
+
+We'll also need to include the middleware within the `ApplicationController`
+
+```rb
+class ApplicationController < ActionController::API
+  include ActionController::Cookies
+  # ...
+end
+```
+
+### Database
+
+We need a `password_digest` column in our `users` table to store our users' encrypted passwords.
+
+```bash
+rails g migration AddPasswordDigestToUsers password_digest
+```
+
+```bash
+rails db:migrate
+```
+
+### Models
+
+- We need to add the `has_secure_password` macro to the model to implement the `authenticate` and `password=` methods used in login & signup actions respectively
+
+5. Make sure that a `UserSerializer` exists. NOTE: Do not serialize a user password.
+
+### Adding a signup feature
+
+- What route needs to be added to `config/routes.rb`?
+- What controller action is responsible for handling a signup?
+- What type of HTTP verb will be used for this request?
+- What is the controller action's responsibility and how to handle the incoming request? The logic defined here should handle a successful and unsuccessful signup. Don't forget to log the user in, what piece of code is essential for this?
+
+### Adding a login feature
+
+- What route needs to be added to `config/routes.rb`?
+- What controller action is responsible for handling a login?
+- What type of HTTP verb will be used for this request?
+- What is the controller action's responsibility and how to handle the incoming request? The logic defined here should handle a successful and unsuccessful login.
+- Don't forget to log the user in, what piece of code is essential for this?
+
+### Adding an authentication method that will prove if a current user exists or not
+
+- What route needs to be added to `config/routes.rb`?
+- What controller action is responsible for handling this request?
+- What type of HTTP verb will be used?
+- What is the controller action's responsibility and how to handle the incoming request? For this action, what is going to be checked to determine if a user has already logged in and been authenticated? What special method exists to set our logged in user?
+- NOTE: Update the `current_user` method so that it makes use of the `user_id` stored in the session cookie sent from the browser.
+
+### Adding a logout feature
+
+- What route needs to be added to `config/routes.rb`?
+- What controller action is responsible for handling the logout request?
+- What type of HTTP verb will be used?
+- What is the controller action's responsibility and how to handle the incoming request? Will there be a return value?
+- How is logging a user out handled?
