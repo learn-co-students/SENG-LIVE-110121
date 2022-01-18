@@ -1,6 +1,18 @@
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({setCurrentUser}) => {
+
+  const handleLogout = () => {
+    fetch("/logout", {
+      method: "DELETE"
+    })
+      .then((r) => r.json())
+      .then(() => {
+        console.log('logged out!!')
+        setCurrentUser(null)
+      });
+  }
+
   return (
     <nav className="flex">
       <ul class="flex">
@@ -19,7 +31,7 @@ const Navbar = () => {
             New Item
           </NavLink>
         </li>
-        <button>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </ul>
       <hr />
     </nav>

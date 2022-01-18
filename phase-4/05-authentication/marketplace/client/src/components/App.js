@@ -24,7 +24,7 @@ const App = () => {
   return (
     <div className="app">
     <h1>Welcome to Marketplace!</h1>
-      <Router>{currentUser ? <LoggedIn /> : <LoggedOut />}</Router>
+      <Router>{currentUser ? <LoggedIn setCurrentUser={setCurrentUser} /> : <LoggedOut />}</Router>
     </div>
   );
 };

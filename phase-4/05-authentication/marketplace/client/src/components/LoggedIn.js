@@ -2,11 +2,11 @@ import Navbar from "./NavBar";
 import Header from "./Header";
 import Routing from "./Routing";
 
-const LoggedIn = () => {
+const LoggedIn = ({ setCurrentUser }) => {
   return (
     <div>
       <Header />
-      <Navbar />
+      <Navbar setCurrentUser={setCurrentUser}/>
       <Routing />
     </div>
   );

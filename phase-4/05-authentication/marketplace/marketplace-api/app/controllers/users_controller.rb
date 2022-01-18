@@ -2,7 +2,16 @@ class UsersController < ApplicationController
 
     def create 
         user = User.create!(user_params)
+        session[:user_id] = user.id # this is the piece that logs a user in
         render json: user, status: :created 
+    end
+
+    def show 
+        if current_user 
+            render json: current_user, status: :ok 
+        else 
+            render json: "No one is logged in", status: :unauthorized
+        end
     end
 
     def destroy 
@@ -16,6 +25,6 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.permit(:username, :email)
+        params.permit(:username, :email, :password) # password=
     end
 end
