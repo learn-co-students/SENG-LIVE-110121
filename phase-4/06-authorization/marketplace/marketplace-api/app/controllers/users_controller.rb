@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :authenticate_user, only: [:create, :show]
 
     def create 
         user = User.create!(user_params)
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
     end
 
     def destroy 
-        user = User.find(params[:id])
+        user = User.find_by_id(params[:id])
         user.destroy 
         head :no_content 
     rescue ActiveRecord::RecordNotFound => error 
@@ -28,3 +29,12 @@ class UsersController < ApplicationController
         params.permit(:username, :email, :password) # password=
     end
 end
+
+
+
+# methods that will raise an exception:
+
+# find 
+# find_by_attr! 
+# create!
+# update! 

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+
+    # signup => '/users' POST 
     def create 
         user = User.create!(user_params)
         session[:user_id] = user.id # this is the piece that logs a user in

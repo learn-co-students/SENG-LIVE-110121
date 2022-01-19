@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # resources :category_items
   resources :categories, only: [:index]
-  resources :items, only: [:index, :show, :create, :update]
+  resources :items, only: [:index, :show, :create, :update, :destroy]
   resources :users, only: [:create, :destroy]
 
   get '/me', to: "users#show"

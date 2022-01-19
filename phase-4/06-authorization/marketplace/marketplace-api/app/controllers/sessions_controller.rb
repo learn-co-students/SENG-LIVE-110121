@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user, only: [:login]
+
   def login
     # find the user by username 
       user = User.find_by_username(params[:username])
@@ -11,7 +13,8 @@ class SessionsController < ApplicationController
 
     # log our user in! create the session
       session[:user_id] = user.id
-    # send a success response 
+      cookies[:movie] = "Don't look up"    
+      # send a success response 
       render json: user, status: :ok
     else 
       render json: {error: "Auth creds not valid"}, status: :unauthorized
